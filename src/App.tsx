@@ -13,7 +13,9 @@ function App() {
       document.title=`${searchTerm} Music`
       const fetchData = async () => {
         const response = await fetch(`https://itunes.apple.com/search?term=${searchTerm}`)
+        // console.log(response)
         const resData = await response.json()
+        // console.log(resData)
         if(resData.results.length > 0) {
           setData(resData.results)
         } else {
@@ -24,7 +26,7 @@ function App() {
   }
   }, [searchTerm])
 
-  const handleSearch = (e: any, term: any) => {
+  const handleSearch = (e: any, term: string) => {
     e.preventDefault()
     setSearchTerm(term)
   }
